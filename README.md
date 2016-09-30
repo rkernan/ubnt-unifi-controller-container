@@ -1,6 +1,8 @@
 # UBNT Unifi Controller for Docker
 
-Unofficial Docker image for UBNT Unifi Controller software.
+https://hub.docker.com/r/rkernan/ubnt-unifi-controller/tags/
+
+Unofficial Docker image for Ubiquiti UniFi Controller software.
 
 ## Build
 
