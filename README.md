@@ -6,13 +6,19 @@ Unofficial Docker image for UBNT Unifi Controller software.
 
 ```
 docker build -t rkernan/ubnt-unifi-controller:latest .
-docker push rkernan/ubnt-unifi-controller:latest
 ```
 
 ## Run
 
 ```
-docker run -d -p 8080:8080 -p 8443:8443 -p 8880:8880 -p 8843:8843 -v /path/to/unifi/data --name unifi-control rkernan/ubnt-unifi-controller
+docker run --detach --restart=always \
+	-p 8080:8080 \
+	-p 8443:8443 \
+	-p 8880:8880 \
+	-p 8843:8843 \
+	-v /path/to/unifi/data \
+	--name unifi-control \
+	rkernan/ubnt-unifi-controller
 ```
 
 ## Ports
