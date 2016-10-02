@@ -7,20 +7,24 @@ Unofficial Docker image for Ubiquiti UniFi Controller software.
 ## Build
 
 ```
-docker build -t rkernan/ubnt-unifi-controller:latest .
+docker build \
+    --tag rkernan/ubnt-unifi-controller:latest \
+    .
 ```
 
 ## Run
 
 ```
-docker run --detach --restart=always \
-	-p 8080:8080 \
-	-p 8443:8443 \
-	-p 8880:8880 \
-	-p 8843:8843 \
-	-v /path/to/unifi/data:/usr/lib/unifi/data \
-	--name unifi-control \
-	rkernan/ubnt-unifi-controller
+docker run \
+    --detach \
+    --restart=always \
+    --publish 8080:8080 \
+    --publish 8443:8443 \
+    --publish 8880:8880 \
+    --publish 8843:8843 \
+    --volume /path/to/unifi/data:/usr/lib/unifi/data \
+    --name unifi-control \
+    rkernan/ubnt-unifi-controller
 ```
 
 ## Ports
