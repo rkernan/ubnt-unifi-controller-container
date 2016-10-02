@@ -18,7 +18,7 @@ docker run --detach --restart=always \
 	-p 8443:8443 \
 	-p 8880:8880 \
 	-p 8843:8843 \
-	-v /path/to/unifi/data \
+	-v /path/to/unifi/data:/usr/lib/unifi/data \
 	--name unifi-control \
 	rkernan/ubnt-unifi-controller
 ```
