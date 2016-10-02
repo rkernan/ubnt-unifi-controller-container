@@ -36,3 +36,21 @@ https://help.ubnt.com/hc/en-us/articles/218506997-UniFi-Ports-Used
 - `portal.http.port=8880` - Port for HTTP guest portal redirect.
 - `portal.https.port=8843` - Port for HTTPS guest portal redirect.
 - `unifi.db.port=27117` - Local-bound port for DB server. Do not need to expose.
+
+## Set up SSL Certificate
+
+If `/usr/lib/unifi/data` is set up as a volume then the keystore will persist between docker containers. Simple connect to the container and import the certificate file into the keystore. In the example below the certificate file is `data/server.crt`.
+
+https://help.ubnt.com/hc/en-us/articles/212500127-UniFi-SSL-certificate-error-upon-opening-controller-page
+
+```
+[root@localhost ubnt-unifi-controller-docker]# docker exec -it unifi-control /bin/bash
+root@fc64755c9d3e:/usr/lib/unifi# java -jar lib/ace.jar import_cert data/server.crt
+parse server.crt (PEM, 1 certs): CN=localhost
+Importing signed cert[localhost]
+Certificates successfuly imported. Please restart the UniFi Controller.
+root@fc64755c9d3e:/usr/lib/unifi# exit
+exit
+[root@localhost ubnt-unifi-controller-docker]# docker restart unifi-control
+unifi-control
+```
