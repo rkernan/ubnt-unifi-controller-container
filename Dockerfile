@@ -6,4 +6,4 @@ RUN apt-get -q --assume-no update && apt-get install -qy mongodb-server unifi
 VOLUME /usr/lib/unifi/data
 WORKDIR /usr/lib/unifi
 EXPOSE 8080 8443 8880 8843
-CMD ["java", "-Xmx256M", "-jar", "lib/ace.jar", "start"]
+CMD ["java", "-jar", "lib/ace.jar", "start"]
