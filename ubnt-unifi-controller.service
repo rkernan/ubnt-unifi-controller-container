@@ -1,0 +1,11 @@
+[Unit]
+Description=UBNT Unifi Controller
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Slice=machine.slice
+MemoryLimit=512M
+ExecStart=/usr/bin/rkt run --insecure-options=image --volume data,kind=host,source=/usr/local/lib/unifi/data/,readOnly=false --volume logs,kind=host,source=/usr/local/lib/unifi/logs,readOnly=false --port=http:8080 --port=https:8443 --port=portal-http:8880 --port=portal-https:8843 /usr/local/lib/unifi/ubnt-unifi-controller.aci
+ExecStopPost=/usr/bin/rks gc --mark-only
+Restart=always

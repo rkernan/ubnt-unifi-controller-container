@@ -1,6 +1,16 @@
 # UBNT Unifi Controller for Docker
 
-Unofficial container image for Ubiquiti UniFi Controller software.
+Unofficial image for Ubiquiti UniFi Controller software.
+
+## As a service
+
+Requires *rkt* and *acbuild*.
+
+```
+make clean install
+systemctl enable ubnt-unifi-controller.service
+systemctl start ubnt-unifi-controller.service
+```
 
 ## Docker
 
