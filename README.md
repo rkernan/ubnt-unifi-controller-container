@@ -1,19 +1,19 @@
 # UBNT Unifi Controller for Docker
 
+Unofficial container image for Ubiquiti UniFi Controller software.
+
+## Docker
+
 https://hub.docker.com/r/rkernan/ubnt-unifi-controller/tags/
 
-Unofficial Docker image for Ubiquiti UniFi Controller software.
-
-## Build
-
+Build:
 ```
 docker build \
     --tag rkernan/ubnt-unifi-controller:latest \
     .
 ```
 
-## Run
-
+Run:
 ```
 docker run \
     --detach \
@@ -25,6 +25,25 @@ docker run \
     --volume /path/to/unifi/data:/usr/lib/unifi/data \
     --name unifi-control \
     rkernan/ubnt-unifi-controller
+```
+
+## rkt
+
+Build:
+```
+./accp.sh
+```
+
+Run:
+```
+systemd-run --slice=machine rkt run \
+    --insecure-options=image \
+    --volume data,kind=host,source=/data/unifi,readOnly=false \
+    --port=http:8080 \
+    --port=https:8443 \
+    --port=portal-http:8880 \
+    --port=portal-https:8843 \
+    $(pwd)/ubnt-unifi-controller.aci
 ```
 
 ## Ports
