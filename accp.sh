@@ -8,7 +8,7 @@ acbuild run -- apt-key adv --keyserver keyserver.ubuntu.com --recv C0A52C50
 acbuild run -- apt-get update -q --assume-no
 acbuild run -- apt-get install -qy unifi
 acbuild mount add data /usr/lib/unifi/data
-acbuild mount add logs /var/log/messages/unifi
+acbuild mount add logs /usr/lib/unifi/logs
 acbuild port add http tcp 8080
 acbuild port add https tcp 8443
 acbuild port add portal-http tcp 8880

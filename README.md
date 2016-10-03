@@ -23,6 +23,7 @@ docker run \
     --publish 8880:8880 \
     --publish 8843:8843 \
     --volume /path/to/unifi/data:/usr/lib/unifi/data \
+    --volume /path/to/unifi/logs:/usr/lib/unifi/logs \
     --name unifi-control \
     rkernan/ubnt-unifi-controller
 ```
@@ -38,7 +39,8 @@ Run:
 ```
 systemd-run --slice=machine rkt run \
     --insecure-options=image \
-    --volume data,kind=host,source=/data/unifi,readOnly=false \
+    --volume data,kind=host,source=/path/to/unifi/data/,readOnly=false \
+    --volume logs,kind=host,source=/path/to/unifi/logs,readOnly=false \
     --port=http:8080 \
     --port=https:8443 \
     --port=portal-http:8880 \
@@ -58,12 +60,12 @@ https://help.ubnt.com/hc/en-us/articles/218506997-UniFi-Ports-Used
 
 ## Set up SSL Certificate
 
-If `/usr/lib/unifi/data` is set up as a volume then the keystore will persist
-between docker containers. Simply connect to the container and import the
-certificate file into the keystore. In the example below the certificate file
-is `data/server.crt`.
-
 https://help.ubnt.com/hc/en-us/articles/212500127-UniFi-SSL-certificate-error-upon-opening-controller-page
+
+If `/usr/lib/unifi/data` is set up as a volume then the keystore will persist
+between containers. Simply connect to the container and import the
+certificate file into the keystore. In the examples below the certificate file
+is `data/server.crt`.
 
 ```
 [root@localhost ubnt-unifi-controller-docker]# docker exec -it unifi-control /bin/bash
