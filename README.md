@@ -68,13 +68,13 @@ https://help.ubnt.com/hc/en-us/articles/218506997-UniFi-Ports-Used
 - `portal.https.port=8843` - Port for HTTPS guest portal redirect.
 - `unifi.db.port=27117` - Local-bound port for DB server.
 
-## Set up SSL Certificate
+## Set up TLS/SSL Certificate
 
 https://help.ubnt.com/hc/en-us/articles/212500127-UniFi-SSL-certificate-error-upon-opening-controller-page
 
 If `/usr/lib/unifi/data` is set up as a volume then the keystore will persist
 between containers. Simply connect to the container and import the
-certificate file into the keystore. In the examples below the certificate file
+certificate file into the keystore. In the example below the certificate file
 is `data/server.crt`.
 
 ```
