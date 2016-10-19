@@ -1,4 +1,4 @@
-# UBNT Unifi Controller for Docker
+# UBNT Unifi Controller Linux Container
 
 Unofficial image for Ubiquiti UniFi Controller software.
 
