@@ -12,7 +12,9 @@ systemctl enable ubnt-unifi-controller.service
 systemctl start ubnt-unifi-controller.service
 ```
 
-## Docker
+## Build and run manually
+
+### Docker
 
 https://hub.docker.com/r/rkernan/ubnt-unifi-controller/tags/
 
@@ -38,7 +40,7 @@ docker run \
     rkernan/ubnt-unifi-controller
 ```
 
-## rkt
+### rkt
 
 Build:
 ```
@@ -77,6 +79,7 @@ between containers. Simply connect to the container and import the
 certificate file into the keystore. In the example below the certificate file
 is `data/server.crt`.
 
+Docker instructions:
 ```
 [root@localhost ubnt-unifi-controller-docker]# docker exec -it unifi-control /bin/bash
 root@fc64755c9d3e:/usr/lib/unifi# java -jar lib/ace.jar import_cert data/server.crt
